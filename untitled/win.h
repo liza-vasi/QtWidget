@@ -1,9 +1,11 @@
 #ifndef win_h
 #define win_h
-#include <QtGui>
+#include <QtWidgets>
+#include <QValidator>
+#include <QTextCodec>
 class Win:public QWidget // класс окна
 {
-    Q_OBJECT // макрос Qt, обеспечивающий корректное создание сигналов и слотов
+    Q_OBJECT
 protected:
     QTextCodec *codec;
     QFrame *frame; // рамка
@@ -14,18 +16,20 @@ protected:
     QPushButton *nextButton; // кнопка Следующее
     QPushButton *exitButton; // кнопка Выход
 public:
-    Win(QWidget *parent = 0); // конструктор
+    Win(QWidget *parent = nullptr); // конструктор
 public slots:
     void begin(); // метод начальной настройки интерфейса
     void calc(); // метод реализации вычислений
 };
-class StrValidator:public QValidator // класс компонента проверки ввода
+class StrValidator : public QValidator
 {
 public:
-    StrValidator(QObject *parent):QValidator(parent){}
-    virtual State validate(QString &str,int &pos)const
+    StrValidator(QObject *parent = nullptr) : QValidator(parent) {}
+
+
+    virtual State validate(QString &str, int &pos) const override
     {
-        return Acceptable; // метод всегда принимает вводимую строку
+        return Acceptable;
     }
 };
 #endif
