@@ -1,6 +1,7 @@
 #ifndef figura_h
 #define figura_h
-#include <QtGui>
+#include <QtWidgets>
+#include <cmath>
 class Figura
 {
 protected:
@@ -9,8 +10,10 @@ protected:
 public:
     Figura(int X,int Y,int Halflen):
         x(X),y(Y),halflen(Halflen){}
+    virtual ~Figura() {}
     void move(float Alpha,QPainter *Painter);
 };
+
 class MyLine:public Figura
 {
 protected:
@@ -18,6 +21,7 @@ protected:
 public:
     MyLine(int x,int y,int halflen):Figura(x,y,halflen){}
 };
+
 class MyRect:public Figura
 {
 protected:
