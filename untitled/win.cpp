@@ -2,7 +2,7 @@
 
 Win::Win(QWidget *parent) : QWidget(parent)
 {
-
+    codec = QTextCodec::codecForName("UTF-8");
     setWindowTitle(QString::fromUtf8("Возведение в квадрат"));
 
     frame = new QFrame(this);
